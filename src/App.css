@@ -1,38 +1,151 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+.header{
+  width: 100%;
+  height: 55px;
+  padding: 10px 5%;
+  background: whitesmoke;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.34);
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header h2{
+  font-size: 22px;
+  color: black;
+}
+.header .links{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 35px;
+}
+.header .links a{
+  color: black;
+  font-weight: 530;
+  text-decoration: none;
+  font-size: 17px;
+}
+.header .links a:hover{
+  color: blue;
+  font-weight: 650;
+  font-size: 17px;
+}
+.header .links button{
+  background: steelblue;
+  color: black;
+  padding: 5px 22px;
+  border-radius: 4px;
+  border: 2px solid steelblue;
+  font-size: 16px;
+  font-weight: 600px;
+  cursor: pointer;
+}
+.header .links .logout{
+  background: blueviolet;
+  color: black;
+  padding: 5px 22px;
+  border-radius: 4px;
+  border: 2px solid blueviolet;
+  font-size: 16px;
+  font-weight: 600px;
+  cursor: pointer;
+}
+.header .links .logout:active{
+  background: white;
+  color: black;
+  border: 2px solid white;
+  font-weight: 500px;
+}
+.header .links button:active{
+  background: white;
+  color: black;
+  border: 2px solid white;
+  font-weight: 500;
+}
+.not-found-container{
+  width: 100%;
+  height: 450px;
+  background: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 15px;
+}
+.not-found-container button{
+  padding: 10px 20px;
+  background: steelblue;
+  border: 2px solid steelblue;
+  border-radius: 4px;
+  cursor: pointer;
   color: white;
+  outline: none;
+  font-weight: 600;
+  font-weight: 16px;
 }
-
-.App-link {
-  color: #61dafb;
+.active{
+  color: blue !important ;
+  font-weight: bold;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.login-container{
+  width: 400px;
+  padding: 20px 10px;
+  margin: 90px auto;
+  background: whitesmoke ;
+  border-radius: 8px;
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.795);
+}
+.login-container .title{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-container .title h2{
+  color: steelblue;
+  font-size: 25px;
+}
+.login-container form{
+  width: 100%;
+  height: 100%;
+}
+.login-container form .input-field{
+  width: 100%;
+  margin: 6px 0px;
+}
+.login-container form .input-field p{
+  padding: 5px 0px;
+  color: red;
+  font-weight: 600;
+  font-size: 14px;
+}
+.login-container form .input-field label{
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.login-container form .input-field input{
+  width: 100%;
+  padding: 6px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 2px solid black;
+}
+.login-container form button{
+  width: 100%;
+  margin-top: 25px;
+  padding: 8px;
+  outline: none;
+  border: 2px solid steelblue;
+  background: steelblue;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 17px;
+  font-weight: 600;
+}
+.login-container form button:active{
+  color: steelblue;
+  background: whitesmoke;
+  border: 2px solid steelblue;
 }
