@@ -8,16 +8,22 @@ import Pricing from './pages/Pricing';
 import { useForm } from 'react-hook-form';
 import toast, { Toaster } from 'react-hot-toast';
 import Dashboard from './pages/Dashboard';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 
 function App() {
 
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   const navigate = useNavigate()
 
   const onLoginClick = () => {
-    
-    if(localStorage.getItem('user') != null){
+
+    if (localStorage.getItem('user') != null) {
       localStorage.removeItem('user')
       navigate('/login')
 
@@ -52,52 +58,52 @@ function App() {
       formState: { errors },
       reset } = useForm()
 
-    useEffect( ()=>{
-      if(localStorage.getItem('user') != null){
+    useEffect(() => {
+      if (localStorage.getItem('user') != null) {
         navigate('user')
       }
-      
-      
-    },[]) 
+
+
+    }, [])
     //empty defeciancy useEffect
 
-      const userArray=[
-        {
-          username:'amruta@gmail.com',
-          password:'1234567',
-          fullname:'Amruta Deshmukh'
-        },
-        {
-          username:'shruti@gmail.com',
-          password:'123456',
-          fullname:'Shrutika Kadam'
-        },
-        {
-          username:'praju@gmail.com',
-          password:'12345',
-          fullname:'Prajakta Deshmukh'
-        },
-        {
-          username:'nikita@gmail.com',
-          password:'1234',
-          fullname:'Nikita Ingle'
-        }
-      ]
+    const userArray = [
+      {
+        username: 'amruta@gmail.com',
+        password: '1234567',
+        fullname: 'Amruta Deshmukh'
+      },
+      {
+        username: 'shruti@gmail.com',
+        password: '123456',
+        fullname: 'Shrutika Kadam'
+      },
+      {
+        username: 'praju@gmail.com',
+        password: '12345',
+        fullname: 'Prajakta Deshmukh'
+      },
+      {
+        username: 'nikita@gmail.com',
+        password: '1234',
+        fullname: 'Nikita Ingle'
+      }
+    ]
 
     const onFormSubmit = (data) => {
-      let status= false
-      let i=0
-      for(i=0;i<userArray.length;i++){
-        if(userArray[i].username === data.username && userArray[i].password === data.pwd){
-          status=true;
+      let status = false
+      let i = 0
+      for (i = 0; i < userArray.length; i++) {
+        if (userArray[i].username === data.username && userArray[i].password === data.pwd) {
+          status = true;
           break;
         }
       }
-      if(status===true){
-        localStorage.setItem('user',JSON.stringify(userArray[i]))
+      if (status === true) {
+        localStorage.setItem('user', JSON.stringify(userArray[i]))
         toast.success('Login successfull !');
         navigate('user')
-      } else{
+      } else {
         toast.error('Invalid username and password !')
         reset();
       }
@@ -168,16 +174,24 @@ function App() {
       />
       <div className='header'>
         <h2>Basic-fit Gym</h2>
-        <div className="links">
-          <NavLink to="home">Home</NavLink>
-          <NavLink to="about">About us</NavLink>
-          <NavLink to="services">Services</NavLink>
-          <NavLink to="pricing">Pricing</NavLink>
-          <button className={            
-              localStorage.getItem('user') !=null ? 'logout' : ''
-          } onClick={onLoginClick}>
+
+        <div className="menu-icon" onClick={toggleMenu}>
+          {menuOpen ? <i className="fa-solid fa-xmark"></i> : <i className="fa-solid fa-bars"></i>}
+        </div>
+
+        <div className={`links ${menuOpen ? "active" : ""}`}>
+          <NavLink to="home" onClick={toggleMenu}>Home</NavLink>
+          <NavLink to="about" onClick={toggleMenu}>About us</NavLink>
+          <NavLink to="services" onClick={toggleMenu}>Services</NavLink>
+          <NavLink to="pricing" onClick={toggleMenu}>Pricing</NavLink>
+          <button className={
+            localStorage.getItem('user') != null ? 'logout' : ''
+          }  onClick={() => {
+            onLoginClick(); 
+            toggleMenu();
+          }}>
             {
-              localStorage.getItem('user') !=null ? 'Logout' : 'Login'
+              localStorage.getItem('user') != null ? 'Logout' : 'Login'
             }
           </button>
         </div>
@@ -188,7 +202,7 @@ function App() {
         <Route path='/services' Component={Services} />
         <Route path='/pricing' Component={Pricing} />
         <Route path='/login' element={Login()} />
-        <Route path='/user' Component={Dashboard}/>
+        <Route path='/user' Component={Dashboard} />
         <Route path='*' element={NotFoundComp()} />
       </Routes>
     </>

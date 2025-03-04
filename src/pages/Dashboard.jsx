@@ -12,9 +12,12 @@ export default function Dashboard(){
            navigate('/login')
         }
     },[])
+
     return(
         <> 
-          <h1>Dashboard page</h1>       
+          <div className="dashboard">
+            <h2>Welcome User..!!</h2>
+          </div>   
         </>
     )
 }
