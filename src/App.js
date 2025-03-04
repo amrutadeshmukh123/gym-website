@@ -205,6 +205,7 @@ function App() {
         <Route path='/user' Component={Dashboard} />
         <Route path='*' element={NotFoundComp()} />
       </Routes>
+
     </>
   )
 
