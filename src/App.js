@@ -37,7 +37,7 @@ function App() {
     const navigate = useNavigate()
 
     const goToHome = () => {
-      navigate('/home')
+      navigate('/')
     }
 
     return (
@@ -180,7 +180,7 @@ function App() {
         </div>
 
         <div className={`links ${menuOpen ? "active" : ""}`}>
-          <NavLink to="home" onClick={toggleMenu}>Home</NavLink>
+          <NavLink to="/" onClick={toggleMenu}>Home</NavLink>
           <NavLink to="about" onClick={toggleMenu}>About us</NavLink>
           <NavLink to="services" onClick={toggleMenu}>Services</NavLink>
           <NavLink to="pricing" onClick={toggleMenu}>Pricing</NavLink>
@@ -197,7 +197,7 @@ function App() {
         </div>
       </div>
       <Routes>
-        <Route path='/home' Component={Home} />
+        <Route path='/' Component={Home} />
         <Route path='/about' Component={About} />
         <Route path='/services' Component={Services} />
         <Route path='/pricing' Component={Pricing} />
@@ -205,6 +205,13 @@ function App() {
         <Route path='/user' Component={Dashboard} />
         <Route path='*' element={NotFoundComp()} />
       </Routes>
+
+      {/* <About/>
+      <Services/>
+      <Pricing/>
+      <Login/> */}
+
+      
 
     </>
   )
